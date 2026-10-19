@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="FrigoMalin.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:FrigoMalin.Views"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <!-- ONGLET 1 : MON FRIGO -->
+        <Tab Title="Mon Frigo" Icon="dotnet_bot.svg">
+            <ShellContent
+                Title="Mon Frigo"
+                ContentTemplate="{DataTemplate views:FridgePage}"
+                Route="FridgePage" />
+        </Tab>
+
+        <!-- ONGLET 2 : LISTE DE MARCHÉ (CHECKLIST) -->
+        <Tab Title="Marché" Icon="dotnet_bot.svg">
+            <ShellContent
+                Title="Marché"
+                ContentTemplate="{DataTemplate views:ShoppingListPage}"
+                Route="ShoppingListPage" />
+        </Tab>
+
+        <!-- ONGLET 3 : MENUS & RECETTES -->
+        <Tab Title="Menus &amp; Recettes" Icon="dotnet_bot.svg">
+            <ShellContent
+                Title="Menus &amp; Recettes"
+                ContentTemplate="{DataTemplate views:RecipesPage}"
+                Route="RecipesPage" />
+        </Tab>
+
+        <!-- ONGLET 4 : BILAN ANTI-GASPI -->
+        <Tab Title="Bilan" Icon="dotnet_bot.svg">
+            <ShellContent
+                Title="Bilan"
+                ContentTemplate="{DataTemplate views:WasteStatsPage}"
+                Route="WasteStatsPage" />
+        </Tab>
+    </TabBar>
+
+</Shell>

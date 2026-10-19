@@ -1,0 +1,26 @@
+## .NET Core / MAUI gitignore
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.idea/
+*.DotSettings.user
+.vscode/
+
+## MAUI build artifacts
+AppPackages/
+BundleArtifacts/
+*.apk
+*.aab
+*.msix
+*.appx
+*.appxbundle
+
+## OS generated files
+.DS_Store
+Thumbs.db
