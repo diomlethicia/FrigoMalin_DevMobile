@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
+             xmlns:m="clr-namespace:FrigoMalin.Models"
+             x:Class="FrigoMalin.Views.RecipesPage"
+             Title="🍳 Menus &amp; Recettes"
+             BackgroundColor="#F8F9FA">
+
+    <Grid RowDefinitions="Auto,*" Padding="16">
+        
+        <!-- COMMUTATEUR ENTRE RECETTES & MENUS -->
+        <Frame Grid.Row="0" BackgroundColor="#E8F5E9" CornerRadius="12" Padding="4" Margin="0,0,0,14">
+            <Grid ColumnDefinitions="*,*">
+                <Button Grid.Column="0" 
+                        Text="🍳 Idées Recettes" 
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        CornerRadius="10"
+                        BackgroundColor="{Binding ShowRecipesView, Converter={StaticResource InverseBoolConv}, ConverterParameter='#2E7D32'}"
+                        TextColor="{Binding ShowRecipesView, Converter={StaticResource InverseBoolConv}, ConverterParameter='#FFFFFF'}"
+                        Command="{Binding SwitchTabCommand}" 
+                        CommandParameter="Recettes" />
+
+                <Button Grid.Column="1" 
+                        Text="📅 Menus Semaine" 
+                        FontAttributes="Bold"
+                        FontSize="14"
+                        CornerRadius="10"
+                        BackgroundColor="{Binding ShowMenusView, Converter={StaticResource InverseBoolConv}, ConverterParameter='#2E7D32'}"
+                        TextColor="{Binding ShowMenusView, Converter={StaticResource InverseBoolConv}, ConverterParameter='#FFFFFF'}"
+                        Command="{Binding SwitchTabCommand}" 
+                        CommandParameter="Menus" />
+            </Grid>
+        </Frame>
+
+        <!-- VUE 1 : RECETTES ANTI-GASPI -->
+        <ScrollView Grid.Row="1" IsVisible="{Binding ShowRecipesView}">
+            <VerticalStackLayout Spacing="14">
+                
+                <Frame BackgroundColor="#FFF8E1" BorderColor="#FFE082" CornerRadius="10" Padding="12">
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="💡" FontSize="20" VerticalOptions="Center" />
+                        <Label Text="Ces recettes exploitent en priorité les aliments de votre frigo dont la date de péremption est proche !" 
+                               FontSize="12" TextColor="#F57F17" LineBreakMode="WordWrap" />
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <CollectionView ItemsSource="{Binding Recipes}" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="m:Recipe">
+                            <Frame Margin="0,0,0,12" Padding="16" CornerRadius="14" BackgroundColor="White" HasShadow="True" BorderColor="#E0E0E0">
+                                <VerticalStackLayout Spacing="8">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <Label Grid.Column="0" Text="{Binding Title}" FontAttributes="Bold" FontSize="16" TextColor="#1B5E20" />
+                                        <Label Grid.Column="1" Text="{Binding Category}" FontSize="11" TextColor="#757575" />
+                                    </Grid>
+
+                                    <!-- BADGE SAUVETAGE ANTI-GASPI -->
+                                    <Frame BackgroundColor="#E8F5E9" BorderColor="#81C784" CornerRadius="6" Padding="8,4" HorizontalOptions="Start">
+                                        <Label Text="{Binding AntiWasteBadge}" FontAttributes="Bold" FontSize="11" TextColor="#2E7D32" />
+                                    </Frame>
+
+                                    <Label Text="{Binding Description}" FontSize="13" TextColor="#424242" LineBreakMode="WordWrap" />
+
+                                    <HorizontalStackLayout Spacing="16" Margin="0,4">
+                                        <Label Text="{Binding PrepTimeMinutes, StringFormat='⏱️ {0} min'}" FontSize="12" TextColor="#616161" />
+                                        <Label Text="{Binding Servings, StringFormat='👥 {0} portions'}" FontSize="12" TextColor="#616161" />
+                                    </HorizontalStackLayout>
+
+                                    <Button Text="📖 Voir les ingrédients &amp; étapes"
+                                            BackgroundColor="#F1F8E9"
+                                            TextColor="#2E7D32"
+                                            BorderColor="#A5D6A7"
+                                            BorderWidth="1"
+                                            FontSize="12"
+                                            CornerRadius="8"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipesViewModel}}, Path=ViewRecipeDetailsCommand}"
+                                            CommandParameter="{Binding .}" />
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- VUE 2 : MENUS DE LA SEMAINE -->
+        <ScrollView Grid.Row="1" IsVisible="{Binding ShowMenusView}">
+            <VerticalStackLayout Spacing="12">
+                
+                <Label Text="Planning des repas anti-gaspillage :" FontAttributes="Bold" FontSize="15" TextColor="#333" />
+
+                <CollectionView ItemsSource="{Binding WeeklyMeals}" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="m:WeeklyMeal">
+                            <Frame Margin="0,0,0,8" Padding="12" CornerRadius="10" BackgroundColor="White" BorderColor="#E0E0E0">
+                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10" VerticalOptions="Center">
+                                    
+                                    <!-- JOUR & TYPE -->
+                                    <VerticalStackLayout Grid.Column="0" VerticalOptions="Center">
+                                        <Label Text="{Binding DayName}" FontAttributes="Bold" FontSize="13" TextColor="#2E7D32" />
+                                        <Label Text="{Binding MealTypeDisplay}" FontSize="11" TextColor="#757575" />
+                                    </VerticalStackLayout>
+
+                                    <!-- PLAT & INGRÉDIENTS UTILISÉS -->
+                                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                        <Label Text="{Binding RecipeOrDishName}" FontAttributes="Bold" FontSize="14" TextColor="#212121" />
+                                        <Label Text="{Binding KeyIngredients, StringFormat='Ingrédients: {0}'}" FontSize="11" TextColor="#616161" />
+                                    </VerticalStackLayout>
+
+                                    <!-- STATUT CUISINÉ -->
+                                    <Button Grid.Column="2"
+                                            Text="{Binding IsCooked, Converter={StaticResource InverseBoolConv}, ConverterParameter='Cuisiné'}"
+                                            BackgroundColor="{Binding IsCooked, Converter={StaticResource InverseBoolConv}, ConverterParameter='#2E7D32'}"
+                                            TextColor="White"
+                                            FontSize="11"
+                                            CornerRadius="6"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:RecipesViewModel}}, Path=ToggleMealCookedCommand}"
+                                            CommandParameter="{Binding .}" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

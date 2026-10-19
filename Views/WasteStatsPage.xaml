@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
+             xmlns:m="clr-namespace:FrigoMalin.Models"
+             x:Class="FrigoMalin.Views.WasteStatsPage"
+             Title="📊 Bilan Anti-Gaspi"
+             BackgroundColor="#F8F9FA">
+
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="16">
+            
+            <!-- CARTE DU BADGE ÉCO-RESPONSABLE -->
+            <Frame BackgroundColor="#1B5E20" CornerRadius="16" Padding="18" HasShadow="True">
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Label Text="🌱 Mon Impact Anti-Gaspillage" TextColor="#A5D6A7" FontSize="13" HorizontalOptions="Center" />
+                    <Label Text="{Binding Summary.EcoBadgeTitle}" FontAttributes="Bold" FontSize="20" TextColor="White" HorizontalOptions="Center" />
+                    
+                    <!-- BARRE DE PROGRESSION DU TAUX ANTI-GASPI -->
+                    <VerticalStackLayout Spacing="4" Margin="0,8,0,0">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Grid.Column="0" Text="Taux d'aliments sauvés :" TextColor="#E8F5E9" FontSize="12" />
+                            <Label Grid.Column="1" Text="{Binding Summary.SuccessRatePercentage, StringFormat='{0}%'}" FontAttributes="Bold" TextColor="White" FontSize="13" />
+                        </Grid>
+                        <ProgressBar Progress="{Binding Summary.SuccessRatePercentage, StringFormat='{0}'}" ProgressColor="#00E676" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- CARTES DES ÉCONOMIES VS PERTES FINANCIÈRES -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                
+                <!-- ARGENT SAUVÉ -->
+                <Frame Grid.Column="0" BackgroundColor="#E8F5E9" BorderColor="#81C784" CornerRadius="14" Padding="14">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="💰 Économies" TextColor="#2E7D32" FontSize="12" />
+                        <Label Text="{Binding Summary.TotalMoneySaved, StringFormat='{0:N0} FCFA'}" FontAttributes="Bold" FontSize="16" TextColor="#1B5E20" />
+                        <Label Text="{Binding Summary.ItemsSaved, StringFormat='{0} aliments sauvés'}" FontSize="11" TextColor="#388E3C" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- PERTES ÉVITABLES -->
+                <Frame Grid.Column="1" BackgroundColor="#FFEBEE" BorderColor="#E57373" CornerRadius="14" Padding="14">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="📉 Gaspillage" TextColor="#C62828" FontSize="12" />
+                        <Label Text="{Binding Summary.TotalMoneyLost, StringFormat='{0:N0} FCFA'}" FontAttributes="Bold" FontSize="16" TextColor="#B71C1C" />
+                        <Label Text="{Binding Summary.ItemsWasted, StringFormat='{0} aliments jetés'}" FontSize="11" TextColor="#D32F2F" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- HISTORIQUE DES DERNIÈRES ACTIONS ANTI-GASPI -->
+            <Label Text="Dernières actions enregistrées :" FontAttributes="Bold" FontSize="15" TextColor="#333" Margin="0,8,0,0" />
+
+            <CollectionView ItemsSource="{Binding RecentRecords}" SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <Label Text="Aucun historique pour le moment." TextColor="#757575" HorizontalOptions="Center" Margin="0,20" />
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:WasteRecord">
+                        <Frame Margin="0,0,0,8" Padding="12" CornerRadius="10" BackgroundColor="White" BorderColor="#E0E0E0">
+                            <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10" VerticalOptions="Center">
+                                <Label Grid.Column="0" Text="{Binding ActionBadge}" FontSize="12" VerticalOptions="Center" />
+                                
+                                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="{Binding FoodName}" FontAttributes="Bold" FontSize="14" TextColor="#212121" />
+                                    <Label Text="{Binding ActionDate, StringFormat='Le {0:dd/MM/yyyy}'}" FontSize="11" TextColor="#757575" />
+                                </VerticalStackLayout>
+
+                                <Label Grid.Column="2" 
+                                       Text="{Binding CostFormatted}" 
+                                       FontAttributes="Bold" 
+                                       FontSize="13" 
+                                       VerticalOptions="Center"
+                                       TextColor="{Binding IsSaved, Converter={StaticResource InverseBoolConv}, ConverterParameter='#2E7D32'}" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
