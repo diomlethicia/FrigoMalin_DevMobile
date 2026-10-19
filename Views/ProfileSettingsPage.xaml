@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
+             x:Class="FrigoMalin.Views.ProfileSettingsPage"
+             Title="👤 Mon Profil"
+             BackgroundColor="#F8F9FA">
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="16">
+            
+            <!-- CARTE DU PROFIL UTILISATEUR -->
+            <Frame BackgroundColor="White" CornerRadius="16" Padding="18" HasShadow="True">
+                <HorizontalStackLayout Spacing="16" VerticalOptions="Center">
+                    <Frame BackgroundColor="#E8F5E9" 
+                           BorderColor="#81C784" 
+                           CornerRadius="30" 
+                           HeightRequest="60" 
+                           WidthRequest="60" 
+                           Padding="0">
+                        <Label Text="👩‍🎓" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                    <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                        <Label Text="{Binding UserName}" FontAttributes="Bold" FontSize="17" TextColor="#212121" />
+                        <Label Text="{Binding UserEmail}" FontSize="12" TextColor="#757575" />
+                        <Label Text="Statut : Étudiante M2 Génie Logiciel" FontSize="11" TextColor="#2E7D32" FontAttributes="Bold" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- PARAMÈTRES ANTI-GASPI -->
+            <Frame BackgroundColor="White" CornerRadius="14" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="⚙️ Paramètres des alertes anti-gaspillage" FontAttributes="Bold" FontSize="15" TextColor="#1B5E20" />
+
+                    <!-- SEUIL D'ALERTE -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Prévenir avant la date de péremption :" FontSize="12" TextColor="#555" />
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                            <Slider Grid.Column="0" Minimum="1" Maximum="7" Value="{Binding NotificationDaysBefore}" />
+                            <Label Grid.Column="1" Text="{Binding NotificationDaysBefore, StringFormat='{0} jour(s)'}" FontAttributes="Bold" TextColor="#2E7D32" VerticalOptions="Center" />
+                        </Grid>
+                    </VerticalStackLayout>
+
+                    <!-- TAILLE DU FOYER -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Nombre de personnes dans le foyer :" FontSize="12" TextColor="#555" />
+                        <Entry Text="{Binding HouseholdSize}" Keyboard="Numeric" FontSize="14" TextColor="#212121" />
+                    </VerticalStackLayout>
+
+                    <Button Text="💾 Enregistrer mes réglages"
+                            BackgroundColor="#2E7D32"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            CornerRadius="8"
+                            HeightRequest="42"
+                            Margin="0,6,0,0"
+                            Command="{Binding SaveSettingsCommand}" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- GESTION DES DONNÉES DU PROJET -->
+            <Frame BackgroundColor="White" CornerRadius="14" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="🧪 Outils d'examen &amp; Démonstration" FontAttributes="Bold" FontSize="14" TextColor="#333" />
+                    <Label Text="Rechargez les données réalistes (Frigo, Courses, Recettes, Bilan) pour votre démonstration orale :" FontSize="11" TextColor="#757575" />
+                    
+                    <Button Text="🔄 Réinitialiser les données de démo"
+                            BackgroundColor="#E8F5E9"
+                            TextColor="#1B5E20"
+                            BorderColor="#81C784"
+                            BorderWidth="1"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            CornerRadius="8"
+                            Command="{Binding ResetDemoDataCommand}" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- BOUTON DE DÉCONNEXION -->
+            <Button Text="🚪 Se déconnecter"
+                    BackgroundColor="#FFEBEE"
+                    TextColor="#C62828"
+                    BorderColor="#E57373"
+                    BorderWidth="1"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    CornerRadius="10"
+                    HeightRequest="46"
+                    Command="{Binding LogoutCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

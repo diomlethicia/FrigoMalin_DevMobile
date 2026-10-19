@@ -2,6 +2,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FrigoMalin.Models;
 using FrigoMalin.Services;
+using FrigoMalin.Views;
+using Microsoft.Maui.Controls;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
@@ -65,6 +68,16 @@ namespace FrigoMalin.ViewModels
         public async Task SearchAsync()
         {
             await LoadItemsAsync();
+        }
+
+        [RelayCommand]
+        public async Task OpenDetailAsync(FoodItem item)
+        {
+            if (item == null) return;
+            await Shell.Current.GoToAsync(nameof(FoodDetailPage), new Dictionary<string, object>
+            {
+                { "FoodItem", item }
+            });
         }
 
         [RelayCommand]

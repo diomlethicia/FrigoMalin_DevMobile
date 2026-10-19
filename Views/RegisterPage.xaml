@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
+             x:Class="FrigoMalin.Views.RegisterPage"
+             Title="Créer un compte"
+             BackgroundColor="#F4F6F8">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="24" VerticalOptions="Center">
+            
+            <VerticalStackLayout Spacing="6" HorizontalOptions="Center" Margin="0,10">
+                <Label Text="Créer un compte FrigoMalin" FontAttributes="Bold" FontSize="22" TextColor="#1B5E20" HorizontalOptions="Center" />
+                <Label Text="Personnalisez vos alertes et vos calculs d'économies" FontSize="12" TextColor="#555" HorizontalOptions="Center" />
+            </VerticalStackLayout>
+
+            <Frame BackgroundColor="White" CornerRadius="16" Padding="20" HasShadow="True" BorderColor="#E0E0E0">
+                <VerticalStackLayout Spacing="14">
+                    
+                    <!-- NOM COMPLET -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Nom complet *" FontSize="12" FontAttributes="Bold" TextColor="#424242" />
+                        <Frame BackgroundColor="#FAFAFA" BorderColor="#E0E0E0" CornerRadius="8" Padding="10,0">
+                            <Entry Text="{Binding FullName}" Placeholder="ex: Lucraine Fien" FontSize="14" TextColor="#212121" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- EMAIL -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Adresse Email *" FontSize="12" FontAttributes="Bold" TextColor="#424242" />
+                        <Frame BackgroundColor="#FAFAFA" BorderColor="#E0E0E0" CornerRadius="8" Padding="10,0">
+                            <Entry Text="{Binding Email}" Placeholder="ex: lucraine@univ.edu" Keyboard="Email" FontSize="14" TextColor="#212121" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- MOT DE PASSE -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Mot de passe *" FontSize="12" FontAttributes="Bold" TextColor="#424242" />
+                        <Frame BackgroundColor="#FAFAFA" BorderColor="#E0E0E0" CornerRadius="8" Padding="10,0">
+                            <Entry Text="{Binding Password}" Placeholder="Minimum 6 caractères" IsPassword="True" FontSize="14" TextColor="#212121" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- TAILLE DU FOYER -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Taille du foyer (Personnes)" FontSize="12" FontAttributes="Bold" TextColor="#424242" />
+                        <Frame BackgroundColor="#FAFAFA" BorderColor="#E0E0E0" CornerRadius="8" Padding="10,0">
+                            <Entry Text="{Binding HouseholdSize}" Keyboard="Numeric" FontSize="14" TextColor="#212121" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- BOUTON VALIDER -->
+                    <Button Text="Créer mon compte"
+                            BackgroundColor="#2E7D32"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            CornerRadius="10"
+                            HeightRequest="48"
+                            Margin="0,8,0,0"
+                            Command="{Binding RegisterCommand}" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="← Retour à la connexion"
+                    BackgroundColor="Transparent"
+                    TextColor="#424242"
+                    FontSize="13"
+                    Command="{Binding NavigateBackToLoginCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

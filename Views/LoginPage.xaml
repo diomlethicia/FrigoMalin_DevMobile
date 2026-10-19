@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
+             x:Class="FrigoMalin.Views.LoginPage"
+             Title="Connexion"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#F4F6F8">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="24" Padding="28" VerticalOptions="Center">
+            
+            <!-- EN-TÊTE / LOGO ET TITRE -->
+            <VerticalStackLayout Spacing="8" HorizontalOptions="Center" Margin="0,20,0,10">
+                <Frame BackgroundColor="#E8F5E9" 
+                       BorderColor="#81C784" 
+                       CornerRadius="36" 
+                       HeightRequest="72" 
+                       WidthRequest="72" 
+                       Padding="0" 
+                       HorizontalOptions="Center">
+                    <Label Text="🧊" FontSize="36" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Frame>
+                <Label Text="FrigoMalin" FontAttributes="Bold" FontSize="26" TextColor="#1B5E20" HorizontalOptions="Center" />
+                <Label Text="Gérez votre frigo, éliminez le gaspillage alimentaire !" FontSize="13" TextColor="#555" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+            <!-- CARTE DU FORMULAIRE DE CONNEXION -->
+            <Frame BackgroundColor="White" CornerRadius="16" Padding="20" HasShadow="True" BorderColor="#E0E0E0">
+                <VerticalStackLayout Spacing="14">
+                    
+                    <Label Text="Bienvenue !" FontAttributes="Bold" FontSize="18" TextColor="#212121" />
+                    <Label Text="Connectez-vous pour accéder à vos aliments et recettes." FontSize="12" TextColor="#757575" />
+
+                    <!-- MESSAGE D'ERREUR ÉVENTUEL -->
+                    <Label Text="{Binding ErrorMessage}" 
+                           TextColor="#D32F2F" 
+                           FontSize="12" 
+                           FontAttributes="Bold"
+                           IsVisible="{Binding ErrorMessage, Converter={StaticResource InverseBoolConv}, ConverterParameter=''}" />
+
+                    <!-- CHAMP EMAIL -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Adresse Email" FontSize="12" FontAttributes="Bold" TextColor="#424242" />
+                        <Frame BackgroundColor="#FAFAFA" BorderColor="#E0E0E0" CornerRadius="8" Padding="10,0">
+                            <Entry Text="{Binding Email}" 
+                                   Placeholder="ex: etudiant@univ.edu" 
+                                   Keyboard="Email" 
+                                   FontSize="14" 
+                                   TextColor="#212121" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- CHAMP MOT DE PASSE -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Mot de passe" FontSize="12" FontAttributes="Bold" TextColor="#424242" />
+                        <Frame BackgroundColor="#FAFAFA" BorderColor="#E0E0E0" CornerRadius="8" Padding="10,0">
+                            <Entry Text="{Binding Password}" 
+                                   Placeholder="••••••••" 
+                                   IsPassword="True" 
+                                   FontSize="14" 
+                                   TextColor="#212121" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- SE SOUVENIR DE MOI -->
+                    <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                        <CheckBox IsChecked="{Binding RememberMe}" Color="#2E7D32" />
+                        <Label Text="Se souvenir de moi" FontSize="13" TextColor="#555" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <!-- BOUTON DE CONNEXION PRINCIPAL -->
+                    <Button Text="Se connecter"
+                            BackgroundColor="#2E7D32"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            CornerRadius="10"
+                            HeightRequest="48"
+                            Command="{Binding LoginCommand}" />
+
+                    <!-- BOUTON CONNEXION DÉMO RAPIDE (IDÉAL VIDÉO DE 30S) -->
+                    <Button Text="⚡ Connexion Démo Rapide (1 clic)"
+                            BackgroundColor="#E8F5E9"
+                            TextColor="#1B5E20"
+                            BorderColor="#81C784"
+                            BorderWidth="1"
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            CornerRadius="10"
+                            HeightRequest="44"
+                            Command="{Binding DemoLoginCommand}" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- LIEN VERS LA CRÉATION DE COMPTE -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="6">
+                <Label Text="Pas encore de compte ?" FontSize="13" TextColor="#616161" VerticalOptions="Center" />
+                <Button Text="S'inscrire"
+                        BackgroundColor="Transparent"
+                        TextColor="#2E7D32"
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        Padding="0"
+                        Command="{Binding NavigateToRegisterCommand}" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

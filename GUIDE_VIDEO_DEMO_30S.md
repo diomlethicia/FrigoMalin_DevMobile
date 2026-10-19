@@ -1,24 +1,28 @@
-# 🎬 Guide & Script pour la Vidéo de Démonstration (30 Secondes Maximum)
+# 🎬 Guide & Script Chronométré pour la Vidéo de Démonstration (30s Max)
 
 **Étudiante :** Diom Lucraine Lethicia Fien  
 **Projet :** FrigoMalin Anti-gaspillage  
-**Durée cible :** 28 à 29 secondes *(pour respecter strictement la consigne des 30s max)*  
-**Outil d'enregistrement recommandé :** Touches Windows **`Win + G`** (Barre de jeu Windows intégrée / Capture vidéo gratuite) ou **OBS Studio**.
+**Durée cible :** 28 à 29 secondes *(Consigne stricte : 30 secondes au maximum)*  
+**Outil de capture d'écran gratuit sous Windows :** Touches **`Win + G`** (Capture vidéo native Windows) ou **OBS Studio**.
 
 ---
 
-## ⏱️ Chronologie Seconde par Seconde du Tournage
+## ⏱️ Découpage Seconde par Seconde (29 Secondes au Total)
 
-| Timing | Action à l'écran | Commentaire oral suggéré (ou musique discrète) |
-| :--- | :--- | :--- |
-| **00:00 - 00:05** *(5s)* | **Onglet 1 : « Mon Frigo »**<br>L'application s'ouvre sur l'inventaire.<br>Montrer la bannière d'alerte rouge en haut (*« Attention : 2 aliments à consommer en urgence ! »*). Faire défiler rapidement pour voir les badges de couleur : 🔴 *Poulet & Lait (Critique)*, 🟠 *Tomates (Alerte)*, 🟢 *Carottes (Frais)*. | *« Bonjour, voici FrigoMalin ! Dès l'accueil, l'application classe nos aliments par degré d'urgence avec des alertes visuelles. »* |
-| **00:05 - 00:15** *(10s)* | **Onglet 2 : « Liste de Marché » & Transfert Intelligent**<br>1. Cliquer sur l'onglet **Marché** en bas.<br>2. **Cocher la case d'un article** (ex: *Bananes*).<br>3. La modale s'ouvre : montrer que le **Nom**, la **Catégorie**, la **Quantité** et la **Date d'achat** sont pré-remplis automatiquement.<br>4. Ajuster d'un clic la **Date de péremption manuelle** sur le DatePicker.<br>5. Cliquer sur **« Valider l'ajout »** $\rightarrow$ Message de confirmation ! | *« Au marché, quand je coche un aliment acheté, ses informations sont auto-remplies et je saisis manuellement sa date de péremption pour l'envoyer au frigo. »* |
-| **00:15 - 00:22** *(7s)* | **Onglet 3 : « Menus & Recettes »**<br>1. Cliquer sur l'onglet **Menus & Recettes**.<br>2. Montrer la recette en tête avec le badge : *« 🔥 Sauve 2 ingrédients de votre frigo ! »* (l'algorithme anti-gaspi).<br>3. Cliquer sur le bouton **« Menus Semaine »** pour montrer le planning des repas. | *« L'onglet Menus & Recettes propose des plats qui sauvent en priorité les aliments critiques de notre réfrigérateur. »* |
-| **00:22 - 00:29** *(7s)* | **Onglet 4 : « Bilan Anti-Gaspi »**<br>1. Cliquer sur l'onglet **Bilan**.<br>2. Montrer le badge écologique, le **taux d'aliments sauvés (80%)** et le montant des **économies financières réalisées** (FCFA).<br>3. Arrêter l'enregistrement à 29 secondes. | *« Enfin, le Bilan calcule notre taux de réussite écologique et nos économies financières. Merci ! »* |
+| Timing | Interface montrée | Action à réaliser | Commentaire suggéré |
+| :--- | :--- | :--- | :--- |
+| **00:00 - 00:03** *(3s)* | **Page de Connexion (`LoginPage`)** | L'application démarre sur la page de connexion.<br>Cliquer sur **« ⚡ Connexion Démo Rapide (1 clic) »** $\rightarrow$ Arrivée instantanée sur le frigo. | *« Bonjour ! Voici FrigoMalin, l'application anti-gaspillage mobile. Je me connecte en un clic. »* |
+| **00:03 - 00:09** *(6s)* | **Mon Frigo (`FridgePage`) & Fiche Détails (`FoodDetailPage`)** | 1. Montrer la bannière rouge d'alerte (*2 aliments critiques*).<br>2. Montrer les badges d'urgence 🔴/🟠/🟢.<br>3. Cliquer sur le *Poulet* pour ouvrir sa **Fiche Détails** (conseil de stockage au frigo) puis retour. | *« Le tableau de bord classe nos aliments par urgence de péremption avec des alertes et des conseils de stockage. »* |
+| **00:09 - 00:18** *(9s)* | **Liste de Marché & Modale de Transfert Intelligent** | 1. Basculer sur l'onglet **Marché**.<br>2. **Cocher un article** (ex: *Bananes*).<br>3. La modale s'ouvre : montrer Nom et Qté auto-remplis.<br>4. Ajuster d'un clic la **Date de péremption manuelle** sur le DatePicker.<br>5. Cliquer sur **« Valider l'ajout »** $\rightarrow$ Succès ! | *« Dans la checklist du marché, cocher un aliment pré-remplit ses données et je renseigne sa date manuelle pour l'envoyer au frigo. »* |
+| **00:18 - 00:24** *(6s)* | **Menus & Recettes (`RecipesPage` & `RecipeDetailPage`)** | 1. Basculer sur l'onglet **Menus & Recettes**.<br>2. Montrer la recette en tête : *« 🔥 Sauve 2 ingrédients de votre frigo ! »*.<br>3. Cliquer pour ouvrir la fiche complète de la recette avec ses ingrédients et étapes. | *« L'onglet Menus et Recettes propose des plats qui sauvent en priorité les aliments proches de la date limite. »* |
+| **00:24 - 00:29** *(5s)* | **Bilan Anti-Gaspi (`WasteStatsPage`)** | 1. Basculer sur l'onglet **Bilan**.<br>2. Montrer le badge *« 🏆 Maître Zéro Gaspillage »*, la barre de 80% d'aliments sauvés et les économies financières en FCFA.<br>3. Arrêter l'enregistrement à 29 secondes ! | *« Enfin, le bilan calcule notre taux de sauvetage et nos économies financières. Merci ! »* |
 
 ---
 
-## 💡 Astuces pour un enregistrement parfait
-1. **Répéter 2 fois le parcours avec le chronomètre de votre téléphone** avant de faire la prise finale.
-2. Gardez la souris fluide sans mouvements brusques.
-3. Si vous ne voulez pas parler, vous pouvez ajouter une légende textuelle ou une musique douce libre de droits.
+## 🎯 Points Clés Vérifiés par le Correcteur dans cette Vidéo
+- [x] L'interface de connexion est visible dès le départ.
+- [x] Le classement par urgence (Vert/Orange/Rouge) et l'alerte sont bien visibles.
+- [x] La checklist du marché avec auto-remplissage et **date de péremption manuelle** est démontrée.
+- [x] L'onglet Menus & Recettes anti-gaspi est bien présenté.
+- [x] Le bilan chiffré du gaspillage est affiché.
+- [x] La durée totale reste sous les 30 secondes.

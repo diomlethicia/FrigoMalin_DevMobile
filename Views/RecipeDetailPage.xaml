@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
+             x:Class="FrigoMalin.Views.RecipeDetailPage"
+             Title="Recette Anti-Gaspi"
+             BackgroundColor="#F8F9FA">
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="16">
+            
+            <!-- EN-TÊTE DE LA RECETTE -->
+            <Frame BackgroundColor="White" CornerRadius="16" Padding="18" HasShadow="True">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{Binding Recipe.Title}" FontAttributes="Bold" FontSize="20" TextColor="#1B5E20" />
+                    
+                    <Frame BackgroundColor="#E8F5E9" BorderColor="#81C784" CornerRadius="8" Padding="10,4" HorizontalOptions="Start">
+                        <Label Text="{Binding Recipe.AntiWasteBadge}" FontAttributes="Bold" FontSize="12" TextColor="#2E7D32" />
+                    </Frame>
+
+                    <HorizontalStackLayout Spacing="16" Margin="0,4">
+                        <Label Text="{Binding Recipe.PrepTimeMinutes, StringFormat='⏱️ Temps : {0} min'}" FontSize="13" TextColor="#555" />
+                        <Label Text="{Binding Recipe.Servings, StringFormat='👥 Portions : {0}'}" FontSize="13" TextColor="#555" />
+                    </HorizontalStackLayout>
+
+                    <Label Text="{Binding Recipe.Description}" FontSize="13" TextColor="#424242" LineBreakMode="WordWrap" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- LISTE DES INGRÉDIENTS -->
+            <Frame BackgroundColor="White" CornerRadius="14" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="🛒 Ingrédients nécessaires :" FontAttributes="Bold" FontSize="15" TextColor="#1B5E20" />
+
+                    <CollectionView ItemsSource="{Binding IngredientList}" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                                <HorizontalStackLayout Spacing="8" Margin="0,4">
+                                    <Label Text="•" TextColor="#2E7D32" FontAttributes="Bold" FontSize="16" />
+                                    <Label Text="{Binding .}" FontSize="13" TextColor="#333" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- ÉTAPES DE PRÉPARATION -->
+            <Frame BackgroundColor="White" CornerRadius="14" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="👨‍🍳 Étapes de préparation :" FontAttributes="Bold" FontSize="15" TextColor="#1B5E20" />
+                    <Label Text="{Binding Recipe.Instructions}" FontSize="13" TextColor="#333" LineBreakMode="WordWrap" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- BOUTON CUISINÉ -->
+            <Button Text="🍽️ J'ai préparé ce plat (Sauver les aliments)"
+                    BackgroundColor="#2E7D32"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    CornerRadius="10"
+                    HeightRequest="48"
+                    Command="{Binding CookRecipeCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -6,7 +6,14 @@
     xmlns:views="clr-namespace:FrigoMalin.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <TabBar>
+    <!-- PAGE DE CONNEXION / AUTHENTIFICATION (POINT D'ENTRÉE) -->
+    <ShellContent
+        Title="Connexion"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="LoginPage" />
+
+    <!-- NAVIGATION PRINCIPALE PAR ONGLETS (5 ONGLETS MAJEURS) -->
+    <TabBar Route="MainTabs">
         <!-- ONGLET 1 : MON FRIGO -->
         <Tab Title="Mon Frigo" Icon="dotnet_bot.svg">
             <ShellContent
@@ -37,6 +44,14 @@
                 Title="Bilan"
                 ContentTemplate="{DataTemplate views:WasteStatsPage}"
                 Route="WasteStatsPage" />
+        </Tab>
+
+        <!-- ONGLET 5 : PROFIL & PARAMÈTRES -->
+        <Tab Title="Profil" Icon="dotnet_bot.svg">
+            <ShellContent
+                Title="Profil"
+                ContentTemplate="{DataTemplate views:ProfileSettingsPage}"
+                Route="ProfileSettingsPage" />
         </Tab>
     </TabBar>
 

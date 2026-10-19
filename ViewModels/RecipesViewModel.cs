@@ -2,6 +2,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FrigoMalin.Models;
 using FrigoMalin.Services;
+using FrigoMalin.Views;
+using Microsoft.Maui.Controls;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
@@ -87,13 +90,12 @@ namespace FrigoMalin.ViewModels
         [RelayCommand]
         public async Task ViewRecipeDetailsAsync(Recipe recipe)
         {
-            if (recipe == null || Microsoft.Maui.Controls.Application.Current?.MainPage == null) return;
+            if (recipe == null) return;
 
-            string content = $"⏱️ Temps : {recipe.PrepTimeMinutes} min | 👥 Portions : {recipe.Servings}\n\n" +
-                             $"🛒 Ingrédients :\n{recipe.IngredientsCsv}\n\n" +
-                             $"👨‍🍳 Préparation :\n{recipe.Instructions}";
-
-            await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert(recipe.Title, content, "Fermer");
+            await Shell.Current.GoToAsync(nameof(RecipeDetailPage), new Dictionary<string, object>
+            {
+                { "Recipe", recipe }
+            });
         }
     }
 }

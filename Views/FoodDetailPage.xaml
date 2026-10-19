@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
+             x:Class="FrigoMalin.Views.FoodDetailPage"
+             Title="Détails de l'aliment"
+             BackgroundColor="#F8F9FA">
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="16">
+            
+            <!-- CARTE DU STATUT D'URGENCE & DÉCOMPTE -->
+            <Frame BackgroundColor="{Binding Item.Urgency, Converter={StaticResource UrgencyBgConv}}"
+                   BorderColor="{Binding Item.Urgency, Converter={StaticResource UrgencyColorConv}}"
+                   CornerRadius="16"
+                   Padding="18">
+                <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                    <Label Text="{Binding Item.UrgencyLabel}" 
+                           FontAttributes="Bold" 
+                           FontSize="14" 
+                           TextColor="{Binding Item.Urgency, Converter={StaticResource UrgencyColorConv}}" 
+                           HorizontalOptions="Center" />
+                    
+                    <Label Text="{Binding Item.DaysRemainingText}" 
+                           FontAttributes="Bold" 
+                           FontSize="22" 
+                           TextColor="{Binding Item.Urgency, Converter={StaticResource UrgencyColorConv}}" 
+                           HorizontalOptions="Center" />
+
+                    <Label Text="{Binding Item.Name}" 
+                           FontAttributes="Bold" 
+                           FontSize="18" 
+                           TextColor="#212121" 
+                           HorizontalOptions="Center" 
+                           Margin="0,4,0,0" />
+                    
+                    <Label Text="{Binding Item.CategoryDisplay}" 
+                           FontSize="13" 
+                           TextColor="#616161" 
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- INFORMATIONS DÉTAILLÉES -->
+            <Frame BackgroundColor="White" CornerRadius="14" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Informations de conservation" FontAttributes="Bold" FontSize="15" TextColor="#1B5E20" />
+                    
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Quantité en stock :" TextColor="#757575" FontSize="13" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Item.Quantity, StringFormat='{0}'}" FontAttributes="Bold" TextColor="#212121" FontSize="13" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="Date d'achat :" TextColor="#757575" FontSize="13" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Item.PurchaseDate, StringFormat='{0:dd/MM/yyyy}'}" FontAttributes="Bold" TextColor="#212121" FontSize="13" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="Date de péremption :" TextColor="#757575" FontSize="13" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Item.ExpiryDate, StringFormat='{0:dd/MM/yyyy}'}" FontAttributes="Bold" TextColor="#D32F2F" FontSize="13" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- CONSEIL DE STOCKAGE ANTI-GASPI -->
+            <Frame BackgroundColor="#E3F2FD" BorderColor="#90CAF9" CornerRadius="12" Padding="14">
+                <VerticalStackLayout Spacing="6">
+                    <Label Text="💡 Conseil d'emplacement dans le frigo :" FontAttributes="Bold" FontSize="13" TextColor="#0D47A1" />
+                    <Label Text="{Binding StorageAdvice}" FontSize="12" TextColor="#1565C0" LineBreakMode="WordWrap" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- BOUTONS D'ACTION RAPIDE -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,8,0,0">
+                <Button Grid.Column="0"
+                        Text="✅ Consommé (Sauvé)"
+                        BackgroundColor="#2E7D32"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        CornerRadius="10"
+                        HeightRequest="48"
+                        Command="{Binding MarkConsumedCommand}" />
+
+                <Button Grid.Column="1"
+                        Text="🗑️ Jeté (Périmé)"
+                        BackgroundColor="#FFEBEE"
+                        TextColor="#C62828"
+                        BorderColor="#E57373"
+                        BorderWidth="1"
+                        FontAttributes="Bold"
+                        FontSize="13"
+                        CornerRadius="10"
+                        HeightRequest="48"
+                        Command="{Binding MarkDiscardedCommand}" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
