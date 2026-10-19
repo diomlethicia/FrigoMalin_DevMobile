@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
+             x:Class="FrigoMalin.Views.AddEditFoodPage"
+             Title="➕ Ajouter un aliment au Frigo"
+             BackgroundColor="#F8F9FA">
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="16">
+            
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Informations de l'aliment" FontAttributes="Bold" FontSize="16" TextColor="#2E7D32" />
+                    
+                    <!-- NOM -->
+                    <Label Text="Nom de l'aliment *" FontSize="13" TextColor="#555" />
+                    <Entry Placeholder="Ex: Poulet, Tomates, Lait..." 
+                           Text="{Binding Name}" 
+                           FontSize="15" 
+                           TextColor="#212121" />
+
+                    <!-- CATÉGORIE -->
+                    <Label Text="Catégorie" FontSize="13" TextColor="#555" />
+                    <Picker ItemsSource="{Binding Categories}" 
+                            SelectedItem="{Binding SelectedCategory}" 
+                            FontSize="15" 
+                            TextColor="#212121" />
+
+                    <!-- QUANTITÉ & UNITÉ -->
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0">
+                            <Label Text="Quantité" FontSize="13" TextColor="#555" />
+                            <Entry Keyboard="Numeric" 
+                                   Text="{Binding Quantity}" 
+                                   FontSize="15" 
+                                   TextColor="#212121" />
+                        </VerticalStackLayout>
+                        
+                        <VerticalStackLayout Grid.Column="1">
+                            <Label Text="Unité" FontSize="13" TextColor="#555" />
+                            <Entry Text="{Binding Unit}" 
+                                   Placeholder="kg, L, pièces..." 
+                                   FontSize="15" 
+                                   TextColor="#212121" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <!-- PRIX ESTIMÉ -->
+                    <Label Text="Coût estimé (FCFA ou EUR)" FontSize="13" TextColor="#555" />
+                    <Entry Keyboard="Numeric" 
+                           Text="{Binding EstimatedPrice}" 
+                           FontSize="15" 
+                           TextColor="#212121" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Dates &amp; Suivi de Péremption" FontAttributes="Bold" FontSize="16" TextColor="#2E7D32" />
+
+                    <!-- DATE D'ACHAT -->
+                    <Label Text="Date d'achat" FontSize="13" TextColor="#555" />
+                    <DatePicker Date="{Binding PurchaseDate}" 
+                                Format="dd/MM/yyyy" 
+                                TextColor="#212121" />
+
+                    <!-- DATE DE PÉREMPTION (SAISIE MANUELLE OBLIGATOIRE) -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Date de péremption (Saisie manuelle) *" 
+                               FontAttributes="Bold" 
+                               FontSize="14" 
+                               TextColor="#D32F2F" />
+                        <Label Text="Indiquez manuellement la date limite figurant sur l'aliment :" 
+                               FontSize="12" 
+                               TextColor="#757575" />
+                        <DatePicker Date="{Binding ExpiryDate}" 
+                                    Format="dd/MM/yyyy" 
+                                    TextColor="#D32F2F" 
+                                    FontAttributes="Bold" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- BOUTON D'ENREGISTREMENT -->
+            <Button Text="💾 Enregistrer dans mon Frigo"
+                    BackgroundColor="#2E7D32"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    CornerRadius="12"
+                    HeightRequest="50"
+                    Command="{Binding SaveCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

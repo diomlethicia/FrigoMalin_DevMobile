@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
+             xmlns:m="clr-namespace:FrigoMalin.Models"
+             xmlns:conv="clr-namespace:FrigoMalin.Converters"
+             x:Class="FrigoMalin.Views.FridgePage"
+             Title="🧊 Mon Frigo"
+             BackgroundColor="#F8F9FA">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:UrgencyToColorConverter x:Key="UrgencyColorConv" />
+            <conv:UrgencyToBgColorConverter x:Key="UrgencyBgConv" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16">
+        
+        <!-- BANNIÈRE D'ALERTE D'URGENCE (Si aliments proches de la péremption) -->
+        <Frame Grid.Row="0"
+               IsVisible="{Binding HasUrgentItems}"
+               BackgroundColor="#FFEBEE"
+               BorderColor="#EF5350"
+               CornerRadius="12"
+               Margin="0,0,0,12"
+               Padding="12">
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                <Label Text="🚨" FontSize="24" VerticalOptions="Center" />
+                <VerticalStackLayout VerticalOptions="Center">
+                    <Label Text="Alerte Péremption Imminente" 
+                           FontAttributes="Bold" 
+                           TextColor="#C62828" 
+                           FontSize="15" />
+                    <Label Text="{Binding UrgentAlertText}" 
+                           TextColor="#B71C1C" 
+                           FontSize="13" />
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- BARRE DE RECHERCHE & BOUTON AJOUTER -->
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto" Margin="0,0,0,12" ColumnSpacing="8">
+            <SearchBar Grid.Column="0"
+                       Placeholder="Rechercher un aliment..."
+                       Text="{Binding SearchText}"
+                       SearchCommand="{Binding SearchCommand}"
+                       BackgroundColor="White"
+                       TextColor="#333333" />
+            
+            <Button Grid.Column="1"
+                    Text="➕ Ajouter"
+                    BackgroundColor="#2E7D32"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    Clicked="OnAddFoodClicked" />
+        </Grid>
+
+        <!-- LISTE DES ALIMENTS DU FRIGO CLASSÉS PAR URGENCE -->
+        <RefreshView Grid.Row="2" 
+                     IsRefreshing="{Binding IsBusy}" 
+                     Command="{Binding LoadItemsCommand}">
+            <CollectionView ItemsSource="{Binding FoodItems}"
+                            SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10" Margin="0,40">
+                        <Label Text="❄️" FontSize="48" HorizontalOptions="Center" />
+                        <Label Text="Votre frigo est vide !" FontAttributes="Bold" FontSize="18" TextColor="#555" HorizontalOptions="Center" />
+                        <Label Text="Ajoutez vos aliments ou cochez votre liste de courses." TextColor="#777" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:FoodItem">
+                        <Frame Margin="0,0,0,12"
+                               Padding="14"
+                               CornerRadius="14"
+                               BackgroundColor="White"
+                               BorderColor="{Binding Urgency, Converter={StaticResource UrgencyColorConv}}"
+                               HasShadow="True">
+                            
+                            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto">
+                                
+                                <!-- NOM & CATÉGORIE -->
+                                <VerticalStackLayout Grid.Row="0" Grid.Column="0" Spacing="2">
+                                    <Label Text="{Binding Name}" 
+                                           FontAttributes="Bold" 
+                                           FontSize="17" 
+                                           TextColor="#212121" />
+                                    <Label Text="{Binding CategoryDisplay}" 
+                                           FontSize="12" 
+                                           TextColor="#757575" />
+                                </VerticalStackLayout>
+
+                                <!-- BADGE D'URGENCE (Rouge / Orange / Vert) -->
+                                <Frame Grid.Row="0" Grid.Column="1"
+                                       BackgroundColor="{Binding Urgency, Converter={StaticResource UrgencyBgConv}}"
+                                       BorderColor="{Binding Urgency, Converter={StaticResource UrgencyColorConv}}"
+                                       CornerRadius="8"
+                                       Padding="8,4"
+                                       VerticalOptions="Start">
+                                    <Label Text="{Binding UrgencyLabel}"
+                                           TextColor="{Binding Urgency, Converter={StaticResource UrgencyColorConv}}"
+                                           FontAttributes="Bold"
+                                           FontSize="11" />
+                                </Frame>
+
+                                <!-- DÉTAILS QUANTITÉ & DATES -->
+                                <Grid Grid.Row="1" Grid.ColumnSpan="2" 
+                                      ColumnDefinitions="Auto,*,Auto" 
+                                      Margin="0,8,0,10">
+                                    <Label Grid.Column="0" 
+                                           Text="{Binding Quantity, StringFormat='Quantité: {0}'}" 
+                                           TextColor="#424242" 
+                                           FontSize="13" />
+                                    
+                                    <Label Grid.Column="2" 
+                                           Text="{Binding DaysRemainingText}" 
+                                           FontAttributes="Bold"
+                                           TextColor="{Binding Urgency, Converter={StaticResource UrgencyColorConv}}"
+                                           FontSize="13" />
+                                </Grid>
+
+                                <!-- BOUTONS D'ACTION (Consommé vs Jeté) -->
+                                <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="8">
+                                    <Button Text="✅ Consommé (Sauvé)"
+                                            BackgroundColor="#E8F5E9"
+                                            TextColor="#2E7D32"
+                                            BorderColor="#81C784"
+                                            BorderWidth="1"
+                                            FontSize="12"
+                                            CornerRadius="8"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:FridgeViewModel}}, Path=MarkConsumedCommand}"
+                                            CommandParameter="{Binding .}" />
+
+                                    <Button Text="🗑️ Jeté (Périmé)"
+                                            BackgroundColor="#FFEBEE"
+                                            TextColor="#C62828"
+                                            BorderColor="#E57373"
+                                            BorderWidth="1"
+                                            FontSize="12"
+                                            CornerRadius="8"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:FridgeViewModel}}, Path=MarkDiscardedCommand}"
+                                            CommandParameter="{Binding .}" />
+
+                                    <Button Text="❌"
+                                            BackgroundColor="#EEEEEE"
+                                            TextColor="#616161"
+                                            FontSize="12"
+                                            CornerRadius="8"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:FridgeViewModel}}, Path=DeleteItemCommand}"
+                                            CommandParameter="{Binding .}" />
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>
