@@ -65,7 +65,7 @@ namespace FrigoMalin.ViewModels
         [RelayCommand]
         public async Task NavigateBackToLoginAsync()
         {
-            await Shell.Current.GoToAsync("..");
+            await Shell.Current.GoToAsync("//LoginPage");
         }
     }
 }

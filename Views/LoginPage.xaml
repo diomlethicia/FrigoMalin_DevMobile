@@ -95,14 +95,14 @@
             </Frame>
 
             <!-- LIEN VERS LA CRÉATION DE COMPTE -->
-            <HorizontalStackLayout HorizontalOptions="Center" Spacing="6">
-                <Label Text="Pas encore de compte ?" FontSize="13" TextColor="#616161" VerticalOptions="Center" />
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="6" Margin="0,10,0,20">
+                <Label Text="Pas encore de compte ?" FontSize="14" TextColor="#616161" VerticalOptions="Center" />
                 <Button Text="S'inscrire"
                         BackgroundColor="Transparent"
                         TextColor="#2E7D32"
                         FontAttributes="Bold"
-                        FontSize="13"
-                        Padding="0"
+                        FontSize="14"
+                        HeightRequest="44"
                         Command="{Binding NavigateToRegisterCommand}" />
             </HorizontalStackLayout>
 

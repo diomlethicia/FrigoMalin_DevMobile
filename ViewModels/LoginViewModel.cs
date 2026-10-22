@@ -67,7 +67,7 @@ namespace FrigoMalin.ViewModels
         [RelayCommand]
         public async Task NavigateToRegisterAsync()
         {
-            await Shell.Current.GoToAsync("RegisterPage");
+            await Shell.Current.GoToAsync("//RegisterPage");
         }
     }
 }
