@@ -2,8 +2,8 @@
 
 **Étudiante :** Diom Lucraine Lethicia Fien  
 **Projet :** FrigoMalin  
-**Durée cible :** ~30 secondes  
-**Outil de capture d'écran :** Touches **`Win + G`** (Capture native Windows) ou **OBS Studio**.  
+**Vidéo démo enregistrée :** Disponible directement dans [`docs/demo_frigomalin_30s.mp4`](docs/demo_frigomalin_30s.mp4).  
+**Outil de capture alternatif :** Touches **`Win + G`** (Capture native Windows) ou **OBS Studio**.  
 
 ---
 
