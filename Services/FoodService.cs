@@ -32,7 +32,7 @@ namespace FrigoMalin.Services
                 items = items.Where(f => f.Category == categoryFilter.Value).ToList();
             }
 
-            // Classement rigoureux par urgence : date de péremption la plus proche en premier
+            // Tri par date de péremption la plus proche
             return items.OrderBy(f => f.ExpiryDate).ToList();
         }
 

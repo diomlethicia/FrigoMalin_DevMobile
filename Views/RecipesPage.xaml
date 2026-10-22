@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
              xmlns:m="clr-namespace:FrigoMalin.Models"
              x:Class="FrigoMalin.Views.RecipesPage"
-             Title="🍳 Menus &amp; Recettes"
+             Title="Menus &amp; Recettes"
              BackgroundColor="#F8F9FA">
 
     <Grid RowDefinitions="Auto,*" Padding="16">
@@ -13,7 +13,7 @@
         <Frame Grid.Row="0" BackgroundColor="#E8F5E9" CornerRadius="12" Padding="4" Margin="0,0,0,14">
             <Grid ColumnDefinitions="*,*">
                 <Button Grid.Column="0" 
-                        Text="🍳 Idées Recettes" 
+                        Text="Idées Recettes" 
                         FontAttributes="Bold"
                         FontSize="14"
                         CornerRadius="10"
@@ -23,7 +23,7 @@
                         CommandParameter="Recettes" />
 
                 <Button Grid.Column="1" 
-                        Text="📅 Menus Semaine" 
+                        Text="Menus Semaine" 
                         FontAttributes="Bold"
                         FontSize="14"
                         CornerRadius="10"
@@ -39,10 +39,10 @@
             <VerticalStackLayout Spacing="14">
                 
                 <Frame BackgroundColor="#FFF8E1" BorderColor="#FFE082" CornerRadius="10" Padding="12">
-                    <HorizontalStackLayout Spacing="8">
-                        <Label Text="💡" FontSize="20" VerticalOptions="Center" />
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                        <Image Source="icon_info.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" />
                         <Label Text="Ces recettes exploitent en priorité les aliments de votre frigo dont la date de péremption est proche !" 
-                               FontSize="12" TextColor="#F57F17" LineBreakMode="WordWrap" />
+                               FontSize="12" TextColor="#F57F17" LineBreakMode="WordWrap" VerticalOptions="Center" />
                     </HorizontalStackLayout>
                 </Frame>
 
@@ -64,11 +64,17 @@
                                     <Label Text="{Binding Description}" FontSize="13" TextColor="#424242" LineBreakMode="WordWrap" />
 
                                     <HorizontalStackLayout Spacing="16" Margin="0,4">
-                                        <Label Text="{Binding PrepTimeMinutes, StringFormat='⏱️ {0} min'}" FontSize="12" TextColor="#616161" />
-                                        <Label Text="{Binding Servings, StringFormat='👥 {0} portions'}" FontSize="12" TextColor="#616161" />
+                                        <HorizontalStackLayout Spacing="6" VerticalOptions="Center">
+                                            <Image Source="icon_clock.png" WidthRequest="15" HeightRequest="15" VerticalOptions="Center" />
+                                            <Label Text="{Binding PrepTimeMinutes, StringFormat='{0} min'}" FontSize="12" TextColor="#616161" VerticalOptions="Center" />
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Spacing="6" VerticalOptions="Center">
+                                            <Image Source="icon_people.png" WidthRequest="15" HeightRequest="15" VerticalOptions="Center" />
+                                            <Label Text="{Binding Servings, StringFormat='{0} portions'}" FontSize="12" TextColor="#616161" VerticalOptions="Center" />
+                                        </HorizontalStackLayout>
                                     </HorizontalStackLayout>
 
-                                    <Button Text="📖 Voir les ingrédients &amp; étapes"
+                                    <Button Text="Voir les ingrédients &amp; étapes"
                                             BackgroundColor="#F1F8E9"
                                             TextColor="#2E7D32"
                                             BorderColor="#A5D6A7"

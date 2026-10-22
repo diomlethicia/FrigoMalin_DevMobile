@@ -24,3 +24,10 @@ BundleArtifacts/
 ## OS generated files
 .DS_Store
 Thumbs.db
+
+## Local IDE & Tooling Config
+AGENTS.md
+nuget.config
+UpgradeLog*.htm
+Backup*/
+

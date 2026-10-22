@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
              x:Class="FrigoMalin.Views.AddEditFoodPage"
-             Title="➕ Ajouter un aliment au Frigo"
+             Title="Ajouter un aliment au Frigo"
              BackgroundColor="#F8F9FA">
 
     <ScrollView Padding="20">
@@ -65,13 +65,13 @@
                                 Format="dd/MM/yyyy" 
                                 TextColor="#212121" />
 
-                    <!-- DATE DE PÉREMPTION (SAISIE MANUELLE OBLIGATOIRE) -->
+                    <!-- DATE DE PÉREMPTION -->
                     <VerticalStackLayout Spacing="4">
-                        <Label Text="Date de péremption (Saisie manuelle) *" 
+                        <Label Text="Date de péremption *" 
                                FontAttributes="Bold" 
                                FontSize="14" 
                                TextColor="#D32F2F" />
-                        <Label Text="Indiquez manuellement la date limite figurant sur l'aliment :" 
+                        <Label Text="Date limite de consommation figurant sur l'emballage :" 
                                FontSize="12" 
                                TextColor="#757575" />
                         <DatePicker Date="{Binding ExpiryDate}" 
@@ -83,7 +83,7 @@
             </Frame>
 
             <!-- BOUTON D'ENREGISTREMENT -->
-            <Button Text="💾 Enregistrer dans mon Frigo"
+            <Button Text="Enregistrer dans mon Frigo"
                     BackgroundColor="#2E7D32"
                     TextColor="White"
                     FontAttributes="Bold"

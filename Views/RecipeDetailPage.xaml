@@ -18,9 +18,15 @@
                         <Label Text="{Binding Recipe.AntiWasteBadge}" FontAttributes="Bold" FontSize="12" TextColor="#2E7D32" />
                     </Frame>
 
-                    <HorizontalStackLayout Spacing="16" Margin="0,4">
-                        <Label Text="{Binding Recipe.PrepTimeMinutes, StringFormat='⏱️ Temps : {0} min'}" FontSize="13" TextColor="#555" />
-                        <Label Text="{Binding Recipe.Servings, StringFormat='👥 Portions : {0}'}" FontSize="13" TextColor="#555" />
+                    <HorizontalStackLayout Spacing="20" Margin="0,4">
+                        <HorizontalStackLayout Spacing="6" VerticalOptions="Center">
+                            <Image Source="icon_clock.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                            <Label Text="{Binding Recipe.PrepTimeMinutes, StringFormat='Temps : {0} min'}" FontSize="13" TextColor="#555" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Spacing="6" VerticalOptions="Center">
+                            <Image Source="icon_people.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                            <Label Text="{Binding Recipe.Servings, StringFormat='Portions : {0}'}" FontSize="13" TextColor="#555" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
                     </HorizontalStackLayout>
 
                     <Label Text="{Binding Recipe.Description}" FontSize="13" TextColor="#424242" LineBreakMode="WordWrap" />
@@ -30,7 +36,7 @@
             <!-- LISTE DES INGRÉDIENTS -->
             <Frame BackgroundColor="White" CornerRadius="14" Padding="16" HasShadow="True">
                 <VerticalStackLayout Spacing="10">
-                    <Label Text="🛒 Ingrédients nécessaires :" FontAttributes="Bold" FontSize="15" TextColor="#1B5E20" />
+                    <Label Text="Ingrédients nécessaires :" FontAttributes="Bold" FontSize="15" TextColor="#1B5E20" />
 
                     <CollectionView ItemsSource="{Binding IngredientList}" SelectionMode="None">
                         <CollectionView.ItemTemplate>
@@ -48,13 +54,13 @@
             <!-- ÉTAPES DE PRÉPARATION -->
             <Frame BackgroundColor="White" CornerRadius="14" Padding="16" HasShadow="True">
                 <VerticalStackLayout Spacing="10">
-                    <Label Text="👨‍🍳 Étapes de préparation :" FontAttributes="Bold" FontSize="15" TextColor="#1B5E20" />
+                    <Label Text="Étapes de préparation :" FontAttributes="Bold" FontSize="15" TextColor="#1B5E20" />
                     <Label Text="{Binding Recipe.Instructions}" FontSize="13" TextColor="#333" LineBreakMode="WordWrap" />
                 </VerticalStackLayout>
             </Frame>
 
             <!-- BOUTON CUISINÉ -->
-            <Button Text="🍽️ J'ai préparé ce plat (Sauver les aliments)"
+            <Button Text="J'ai préparé ce plat (Sauver les aliments)"
                     BackgroundColor="#2E7D32"
                     TextColor="White"
                     FontAttributes="Bold"

@@ -37,10 +37,10 @@ namespace FrigoMalin.Services
 
             string badge = rate switch
             {
-                >= 90 => "🏆 Maître Zéro Gaspillage",
-                >= 75 => "🌿 Protecteur Anti-Gaspi",
-                >= 50 => "🌱 Éco-Responsable en Progrès",
-                _ => "⚠️ Attention au Gaspillage"
+                >= 90 => "Maître Zéro Gaspillage",
+                >= 75 => "Protecteur Anti-Gaspi",
+                >= 50 => "Éco-Responsable en Progrès",
+                _ => "Attention au Gaspillage"
             };
 
             return new WasteStatsSummary

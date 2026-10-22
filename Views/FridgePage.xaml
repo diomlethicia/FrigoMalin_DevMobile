@@ -5,7 +5,7 @@
              xmlns:m="clr-namespace:FrigoMalin.Models"
              xmlns:conv="clr-namespace:FrigoMalin.Converters"
              x:Class="FrigoMalin.Views.FridgePage"
-             Title="🧊 Mon Frigo"
+             Title="Mon Frigo"
              BackgroundColor="#F8F9FA">
 
     <ContentPage.Resources>
@@ -26,7 +26,7 @@
                Margin="0,0,0,12"
                Padding="12">
             <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
-                <Label Text="🚨" FontSize="24" VerticalOptions="Center" />
+                <Image Source="icon_alert.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" />
                 <VerticalStackLayout VerticalOptions="Center">
                     <Label Text="Alerte Péremption Imminente" 
                            FontAttributes="Bold" 
@@ -49,7 +49,7 @@
                        TextColor="#333333" />
             
             <Button Grid.Column="1"
-                    Text="➕ Ajouter"
+                    Text="Ajouter"
                     BackgroundColor="#2E7D32"
                     TextColor="White"
                     FontAttributes="Bold"
@@ -65,7 +65,7 @@
                             SelectionMode="None">
                 <CollectionView.EmptyView>
                     <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="10" Margin="0,40">
-                        <Label Text="❄️" FontSize="48" HorizontalOptions="Center" />
+                        <Image Source="icon_fridge.png" WidthRequest="48" HeightRequest="48" HorizontalOptions="Center" />
                         <Label Text="Votre frigo est vide !" FontAttributes="Bold" FontSize="18" TextColor="#555" HorizontalOptions="Center" />
                         <Label Text="Ajoutez vos aliments ou cochez votre liste de courses." TextColor="#777" HorizontalOptions="Center" />
                     </VerticalStackLayout>
@@ -129,7 +129,7 @@
 
                                 <!-- BOUTONS D'ACTION (Consommé vs Jeté) -->
                                 <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2" Spacing="8">
-                                    <Button Text="✅ Consommé (Sauvé)"
+                                    <Button Text="Consommé (Sauvé)"
                                             BackgroundColor="#E8F5E9"
                                             TextColor="#2E7D32"
                                             BorderColor="#81C784"
@@ -139,7 +139,7 @@
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:FridgeViewModel}}, Path=MarkConsumedCommand}"
                                             CommandParameter="{Binding .}" />
 
-                                    <Button Text="🗑️ Jeté (Périmé)"
+                                    <Button Text="Jeté (Périmé)"
                                             BackgroundColor="#FFEBEE"
                                             TextColor="#C62828"
                                             BorderColor="#E57373"
@@ -149,7 +149,7 @@
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:FridgeViewModel}}, Path=MarkDiscardedCommand}"
                                             CommandParameter="{Binding .}" />
 
-                                    <Button Text="❌"
+                                    <Button Text="Suppr."
                                             BackgroundColor="#EEEEEE"
                                             TextColor="#616161"
                                             FontSize="12"

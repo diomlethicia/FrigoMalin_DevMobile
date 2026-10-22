@@ -55,8 +55,8 @@ namespace FrigoMalin.ViewModels
                 UrgentCount = urgentList.Count;
                 HasUrgentItems = UrgentCount > 0;
                 UrgentAlertText = UrgentCount > 0 
-                    ? $"⚠️ Attention : {UrgentCount} aliment(s) à consommer en urgence !" 
-                    : "✨ Aucun aliment critique pour l'instant !";
+                    ? $"Attention : {UrgentCount} aliment(s) à consommer en urgence !" 
+                    : "Aucun aliment critique pour l'instant.";
             }
             finally
             {

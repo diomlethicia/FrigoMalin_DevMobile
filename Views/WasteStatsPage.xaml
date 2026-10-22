@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
              xmlns:m="clr-namespace:FrigoMalin.Models"
              x:Class="FrigoMalin.Views.WasteStatsPage"
-             Title="📊 Bilan Anti-Gaspi"
+             Title="Bilan Anti-Gaspi"
              BackgroundColor="#F8F9FA">
 
     <ScrollView Padding="16">
@@ -13,7 +13,10 @@
             <!-- CARTE DU BADGE ÉCO-RESPONSABLE -->
             <Frame BackgroundColor="#1B5E20" CornerRadius="16" Padding="18" HasShadow="True">
                 <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
-                    <Label Text="🌱 Mon Impact Anti-Gaspillage" TextColor="#A5D6A7" FontSize="13" HorizontalOptions="Center" />
+                    <HorizontalStackLayout Spacing="6" HorizontalOptions="Center">
+                        <Image Source="icon_leaf.png" WidthRequest="18" HeightRequest="18" VerticalOptions="Center" />
+                        <Label Text="Mon Impact Anti-Gaspillage" TextColor="#A5D6A7" FontSize="13" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
                     <Label Text="{Binding Summary.EcoBadgeTitle}" FontAttributes="Bold" FontSize="20" TextColor="White" HorizontalOptions="Center" />
                     
                     <!-- BARRE DE PROGRESSION DU TAUX ANTI-GASPI -->
@@ -33,7 +36,10 @@
                 <!-- ARGENT SAUVÉ -->
                 <Frame Grid.Column="0" BackgroundColor="#E8F5E9" BorderColor="#81C784" CornerRadius="14" Padding="14">
                     <VerticalStackLayout Spacing="4">
-                        <Label Text="💰 Économies" TextColor="#2E7D32" FontSize="12" />
+                        <HorizontalStackLayout Spacing="6">
+                            <Image Source="icon_savings.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                            <Label Text="Économies" TextColor="#2E7D32" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
                         <Label Text="{Binding Summary.TotalMoneySaved, StringFormat='{0:N0} FCFA'}" FontAttributes="Bold" FontSize="16" TextColor="#1B5E20" />
                         <Label Text="{Binding Summary.ItemsSaved, StringFormat='{0} aliments sauvés'}" FontSize="11" TextColor="#388E3C" />
                     </VerticalStackLayout>
@@ -42,7 +48,10 @@
                 <!-- PERTES ÉVITABLES -->
                 <Frame Grid.Column="1" BackgroundColor="#FFEBEE" BorderColor="#E57373" CornerRadius="14" Padding="14">
                     <VerticalStackLayout Spacing="4">
-                        <Label Text="📉 Gaspillage" TextColor="#C62828" FontSize="12" />
+                        <HorizontalStackLayout Spacing="6">
+                            <Image Source="icon_waste.png" WidthRequest="16" HeightRequest="16" VerticalOptions="Center" />
+                            <Label Text="Gaspillage" TextColor="#C62828" FontSize="12" FontAttributes="Bold" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
                         <Label Text="{Binding Summary.TotalMoneyLost, StringFormat='{0:N0} FCFA'}" FontAttributes="Bold" FontSize="16" TextColor="#B71C1C" />
                         <Label Text="{Binding Summary.ItemsWasted, StringFormat='{0} aliments jetés'}" FontSize="11" TextColor="#D32F2F" />
                     </VerticalStackLayout>

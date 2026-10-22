@@ -36,12 +36,12 @@ namespace FrigoMalin.ViewModels
         {
             StorageAdvice = category switch
             {
-                FoodCategory.ViandesEtPoissons => "❄️ Zone très froide (0°C à 2°C) : À placer sur la clayette du bas, juste au-dessus du bac à légumes.",
-                FoodCategory.ProduitsLaitiers => "🥛 Zone fraîche (4°C à 6°C) : À placer sur les étages intermédiaires pour une conservation optimale.",
-                FoodCategory.FruitsEtLegumes => "🥦 Bac à légumes : Humidité contrôlée, idéal pour éviter le flétrissement des légumes frais.",
-                FoodCategory.PlatsCuisines => "🍲 Étage supérieur : Bien emballer sous film ou boîte hermétique après complet refroidissement.",
-                FoodCategory.Surgeles => "🧊 Congélateur (-18°C) : Conserver au congélateur jusqu'à la date limite.",
-                _ => "📦 Conserver dans un endroit frais et sec."
+                FoodCategory.ViandesEtPoissons => "Zone très froide (0°C à 2°C) : À placer sur la clayette du bas, juste au-dessus du bac à légumes.",
+                FoodCategory.ProduitsLaitiers => "Zone fraîche (4°C à 6°C) : À placer sur les étages intermédiaires pour une conservation optimale.",
+                FoodCategory.FruitsEtLegumes => "Bac à légumes : Humidité contrôlée, idéal pour éviter le flétrissement des légumes frais.",
+                FoodCategory.PlatsCuisines => "Étage supérieur : Bien emballer sous film ou boîte hermétique après complet refroidissement.",
+                FoodCategory.Surgeles => "Congélateur (-18°C) : Conserver au congélateur jusqu'à la date limite.",
+                _ => "Conserver dans un endroit frais et sec."
             };
         }
 

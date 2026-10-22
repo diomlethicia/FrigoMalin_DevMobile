@@ -12,18 +12,18 @@
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="LoginPage" />
 
-    <!-- NAVIGATION PRINCIPALE PAR ONGLETS (5 ONGLETS MAJEURS) -->
+    <!-- NAVIGATION PRINCIPALE PAR ONGLETS -->
     <TabBar Route="MainTabs">
         <!-- ONGLET 1 : MON FRIGO -->
-        <Tab Title="Mon Frigo" Icon="dotnet_bot.svg">
+        <Tab Title="Mon Frigo" Icon="icon_fridge.png">
             <ShellContent
                 Title="Mon Frigo"
                 ContentTemplate="{DataTemplate views:FridgePage}"
                 Route="FridgePage" />
         </Tab>
 
-        <!-- ONGLET 2 : LISTE DE MARCHÉ (CHECKLIST) -->
-        <Tab Title="Marché" Icon="dotnet_bot.svg">
+        <!-- ONGLET 2 : LISTE DE MARCHÉ -->
+        <Tab Title="Marché" Icon="icon_market.png">
             <ShellContent
                 Title="Marché"
                 ContentTemplate="{DataTemplate views:ShoppingListPage}"
@@ -31,15 +31,15 @@
         </Tab>
 
         <!-- ONGLET 3 : MENUS & RECETTES -->
-        <Tab Title="Menus &amp; Recettes" Icon="dotnet_bot.svg">
+        <Tab Title="Recettes" Icon="icon_recipes.png">
             <ShellContent
-                Title="Menus &amp; Recettes"
+                Title="Recettes"
                 ContentTemplate="{DataTemplate views:RecipesPage}"
                 Route="RecipesPage" />
         </Tab>
 
         <!-- ONGLET 4 : BILAN ANTI-GASPI -->
-        <Tab Title="Bilan" Icon="dotnet_bot.svg">
+        <Tab Title="Bilan" Icon="icon_stats.png">
             <ShellContent
                 Title="Bilan"
                 ContentTemplate="{DataTemplate views:WasteStatsPage}"
@@ -47,7 +47,7 @@
         </Tab>
 
         <!-- ONGLET 5 : PROFIL & PARAMÈTRES -->
-        <Tab Title="Profil" Icon="dotnet_bot.svg">
+        <Tab Title="Profil" Icon="icon_user.png">
             <ShellContent
                 Title="Profil"
                 ContentTemplate="{DataTemplate views:ProfileSettingsPage}"

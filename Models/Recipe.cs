@@ -32,7 +32,7 @@ namespace FrigoMalin.Models
 
         [Ignore]
         public string AntiWasteBadge => UrgentIngredientsMatched > 0 
-            ? $"🔥 Sauve {UrgentIngredientsMatched} ingrédient(s) de votre frigo !" 
-            : "Recette Économique";
+            ? $"Sauve {UrgentIngredientsMatched} ingrédient(s) du frigo" 
+            : "Recette économique";
     }
 }

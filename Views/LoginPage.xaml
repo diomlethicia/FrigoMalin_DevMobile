@@ -19,7 +19,7 @@
                        WidthRequest="72" 
                        Padding="0" 
                        HorizontalOptions="Center">
-                    <Label Text="🧊" FontSize="36" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <Image Source="icon_fridge.png" WidthRequest="36" HeightRequest="36" HorizontalOptions="Center" VerticalOptions="Center" />
                 </Frame>
                 <Label Text="FrigoMalin" FontAttributes="Bold" FontSize="26" TextColor="#1B5E20" HorizontalOptions="Center" />
                 <Label Text="Gérez votre frigo, éliminez le gaspillage alimentaire !" FontSize="13" TextColor="#555" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
@@ -79,8 +79,8 @@
                             HeightRequest="48"
                             Command="{Binding LoginCommand}" />
 
-                    <!-- BOUTON CONNEXION DÉMO RAPIDE (IDÉAL VIDÉO DE 30S) -->
-                    <Button Text="⚡ Connexion Démo Rapide (1 clic)"
+                    <!-- BOUTON CONNEXION RAPIDE -->
+                    <Button Text="Connexion Démo Rapide"
                             BackgroundColor="#E8F5E9"
                             TextColor="#1B5E20"
                             BorderColor="#81C784"

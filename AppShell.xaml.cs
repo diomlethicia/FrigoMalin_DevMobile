@@ -9,7 +9,7 @@ namespace FrigoMalin
         {
             InitializeComponent();
 
-            // Enregistrement de l'ensemble des routes secondaires (8+ interfaces)
+            // Enregistrement des routes de navigation
             Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
             Routing.RegisterRoute(nameof(AddEditFoodPage), typeof(AddEditFoodPage));
             Routing.RegisterRoute(nameof(FoodDetailPage), typeof(FoodDetailPage));

@@ -27,7 +27,7 @@ namespace FrigoMalin.Models
         public bool IsSaved => ActionType == WasteActionType.Consomme;
 
         [Ignore]
-        public string ActionBadge => IsSaved ? "✅ Sauvé & Consommé" : "🗑️ Gaspillé & Jeté";
+        public string ActionBadge => IsSaved ? "Sauvé & Consommé" : "Gaspillé & Jeté";
 
         [Ignore]
         public string CostFormatted => $"{EstimatedCost:N0} FCFA";

@@ -31,7 +31,6 @@ namespace FrigoMalin.ViewModels
         [ObservableProperty]
         private DateTime _purchaseDate = DateTime.Today;
 
-        // DATE DE PÉREMPTION SAISIE MANUELLEMENT PAR L'UTILISATEUR (exigence stricte)
         [ObservableProperty]
         private DateTime _expiryDate = DateTime.Today.AddDays(4);
 

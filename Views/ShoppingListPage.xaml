@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:FrigoMalin.ViewModels"
              xmlns:m="clr-namespace:FrigoMalin.Models"
              x:Class="FrigoMalin.Views.ShoppingListPage"
-             Title="🛒 Liste de Marché"
+             Title="Liste de Marché"
              BackgroundColor="#F8F9FA">
 
     <Grid>
@@ -15,7 +15,7 @@
                 <!-- CARTE AJOUT D'UN ARTICLE À LA LISTE DE COURSES -->
                 <Frame BackgroundColor="White" CornerRadius="12" Padding="14" HasShadow="True">
                     <VerticalStackLayout Spacing="10">
-                        <Label Text="📝 Préparer mes courses" FontAttributes="Bold" FontSize="16" TextColor="#1B5E20" />
+                        <Label Text="Préparer mes courses" FontAttributes="Bold" FontSize="16" TextColor="#1B5E20" />
                         
                         <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
                             <Entry Grid.Column="0" 
@@ -23,7 +23,7 @@
                                    Text="{Binding NewItemName}" 
                                    FontSize="14" />
                             <Button Grid.Column="1" 
-                                    Text="➕ Ajouter" 
+                                    Text="Ajouter" 
                                     BackgroundColor="#2E7D32" 
                                     TextColor="White"
                                     FontAttributes="Bold"
@@ -53,10 +53,10 @@
 
                 <!-- SECTION EXPLICATIVE DE LA CHECKLIST -->
                 <Frame BackgroundColor="#E3F2FD" BorderColor="#90CAF9" CornerRadius="10" Padding="12">
-                    <HorizontalStackLayout Spacing="8">
-                        <Label Text="💡" FontSize="18" VerticalOptions="Center" />
-                        <Label Text="Cochez un article acheté : l'app pré-remplit les cases et vous demande la date de péremption pour le transférer au frigo !"
-                               FontSize="12" TextColor="#0D47A1" LineBreakMode="WordWrap" />
+                    <HorizontalStackLayout Spacing="10">
+                        <Image Source="icon_info.png" WidthRequest="20" HeightRequest="20" VerticalOptions="Center" />
+                        <Label Text="Cochez un article acheté : l'application pré-remplit les informations et vous invite à renseigner la date de péremption pour l'ajouter au frigo."
+                               FontSize="12" TextColor="#0D47A1" LineBreakMode="WordWrap" VerticalOptions="Center" />
                     </HorizontalStackLayout>
                 </Frame>
 
@@ -65,8 +65,8 @@
 
                 <CollectionView ItemsSource="{Binding ShoppingItems}" SelectionMode="None">
                     <CollectionView.EmptyView>
-                        <VerticalStackLayout HorizontalOptions="Center" Margin="0,30" Spacing="6">
-                            <Label Text="🛒" FontSize="36" HorizontalOptions="Center" />
+                        <VerticalStackLayout HorizontalOptions="Center" Margin="0,30" Spacing="8">
+                            <Image Source="icon_market.png" WidthRequest="36" HeightRequest="36" HorizontalOptions="Center" />
                             <Label Text="Votre liste de courses est vide." TextColor="#757575" HorizontalOptions="Center" />
                         </VerticalStackLayout>
                     </CollectionView.EmptyView>
@@ -100,13 +100,13 @@
                                     </VerticalStackLayout>
 
                                     <!-- BOUTON SUPPRIMER -->
-                                    <Button Grid.Column="2" 
-                                            Text="🗑️" 
-                                            BackgroundColor="Transparent" 
-                                            TextColor="#D32F2F"
-                                            FontSize="14"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ShoppingListViewModel}}, Path=DeleteItemCommand}"
-                                            CommandParameter="{Binding .}" />
+                                    <ImageButton Grid.Column="2" 
+                                                 Source="icon_delete.png" 
+                                                 BackgroundColor="Transparent" 
+                                                 WidthRequest="22"
+                                                 HeightRequest="22"
+                                                 Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ShoppingListViewModel}}, Path=DeleteItemCommand}"
+                                                 CommandParameter="{Binding .}" />
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -116,7 +116,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <!-- MODALE DE TRANSFERT AUTOMATIQUE MARCHÉ -> FRIGO AVEC DATE MANUELLE -->
+        <!-- MODALE DE TRANSFERT MARCHÉ -> FRIGO -->
         <Grid IsVisible="{Binding IsTransferModalVisible}"
               BackgroundColor="#80000000"
               Padding="24">
@@ -129,8 +129,8 @@
                 
                 <VerticalStackLayout Spacing="14">
                     
-                    <HorizontalStackLayout Spacing="8">
-                        <Label Text="❄️" FontSize="24" VerticalOptions="Center" />
+                    <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                        <Image Source="icon_fridge.png" WidthRequest="24" HeightRequest="24" VerticalOptions="Center" />
                         <VerticalStackLayout>
                             <Label Text="Transférer vers le Frigo" FontAttributes="Bold" FontSize="17" TextColor="#2E7D32" />
                             <Label Text="Champs pré-remplis automatiquement :" FontSize="12" TextColor="#757575" />
@@ -172,10 +172,10 @@
                                     BackgroundColor="#F1F8E9" />
                     </VerticalStackLayout>
 
-                    <!-- DATE DE PÉREMPTION (SAISIE MANUELLE PAR L'UTILISATEUR) -->
+                    <!-- DATE DE PÉREMPTION -->
                     <Frame BackgroundColor="#FFF3E0" BorderColor="#FFB74D" Padding="10" CornerRadius="8">
                         <VerticalStackLayout Spacing="4">
-                            <Label Text="🗓️ Date de péremption (Saisie Manuelle) *" 
+                            <Label Text="Date de péremption *" 
                                    FontAttributes="Bold" 
                                    FontSize="13" 
                                    TextColor="#E65100" />
@@ -195,15 +195,15 @@
                                 Text="Annuler" 
                                 BackgroundColor="#EEEEEE" 
                                 TextColor="#424242" 
-                                CornerRadius="8"
+                                CornerRadius="8" 
                                 Command="{Binding CancelTransferCommand}" />
                         
                         <Button Grid.Column="1" 
-                                Text="✅ Valider l'ajout" 
+                                Text="Valider l'ajout" 
                                 BackgroundColor="#2E7D32" 
                                 TextColor="White" 
                                 FontAttributes="Bold" 
-                                CornerRadius="8"
+                                CornerRadius="8" 
                                 Command="{Binding ConfirmTransferCommand}" />
                     </Grid>
 

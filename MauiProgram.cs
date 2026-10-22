@@ -20,7 +20,7 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
-		// 1. SERVICES (Logique Métier, Données SQLite & Authentification)
+		// Services
 		builder.Services.AddSingleton<IAuthService, AuthService>();
 		builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
 		builder.Services.AddSingleton<IFoodService, FoodService>();
@@ -28,7 +28,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<IRecipeService, RecipeService>();
 		builder.Services.AddSingleton<IWasteService, WasteService>();
 
-		// 2. VIEWMODELS (MVVM - CommunityToolkit.Mvvm)
+		// ViewModels
 		builder.Services.AddTransient<LoginViewModel>();
 		builder.Services.AddTransient<RegisterViewModel>();
 		builder.Services.AddTransient<FridgeViewModel>();
@@ -40,7 +40,7 @@ public static class MauiProgram
 		builder.Services.AddTransient<WasteStatsViewModel>();
 		builder.Services.AddTransient<ProfileSettingsViewModel>();
 
-		// 3. VUES (Les 10 Interfaces de l'application)
+		// Views
 		builder.Services.AddTransient<LoginPage>();
 		builder.Services.AddTransient<RegisterPage>();
 		builder.Services.AddTransient<FridgePage>();

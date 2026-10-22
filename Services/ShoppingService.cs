@@ -45,12 +45,7 @@ namespace FrigoMalin.Services
         {
             var db = await _dbService.GetConnectionAsync();
 
-            // Création automatique de l'aliment dans le frigo avec :
-            // - Nom auto-rempli
-            // - Catégorie auto-remplie
-            // - Quantité auto-remplie
-            // - Date d'achat auto-remplie (date du jour)
-            // - Date de péremption saisie MANUELLEMENT par l'utilisateur
+            // Création de l'aliment pour le frigo
             var foodItem = new FoodItem
             {
                 Name = item.Name,

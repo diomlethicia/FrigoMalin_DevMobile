@@ -57,7 +57,6 @@ namespace FrigoMalin.ViewModels
         [ObservableProperty]
         private DateTime _transferPurchaseDate = DateTime.Today;
 
-        // DATE DE PÉREMPTION SAISIE MANUELLEMENT PAR L'UTILISATEUR DANS LA MODALE
         [ObservableProperty]
         private DateTime _transferManualExpiryDate = DateTime.Today.AddDays(3);
 
@@ -117,7 +116,7 @@ namespace FrigoMalin.ViewModels
             await LoadShoppingItemsAsync();
         }
 
-        // DÉCLENCHÉ LORSQUE L'UTILISATEUR COCHE UN ARTICLE DANS LA CHECKLIST DU MARCHÉ
+        // Coche d'un article dans la liste de courses
         [RelayCommand]
         public void OnItemChecked(ShoppingItem item)
         {
@@ -147,7 +146,7 @@ namespace FrigoMalin.ViewModels
                 return;
             }
 
-            // Enregistrement dans le frigo avec la date de péremption manuelle choisie
+            // Enregistrement dans le frigo
             await _shoppingService.TransferToFridgeAsync(SelectedItemToTransfer, TransferManualExpiryDate);
 
             IsTransferModalVisible = false;
@@ -156,9 +155,9 @@ namespace FrigoMalin.ViewModels
             if (Microsoft.Maui.Controls.Application.Current?.MainPage != null)
             {
                 await Microsoft.Maui.Controls.Application.Current.MainPage.DisplayAlert(
-                    "🎉 Transféré au Frigo !",
+                    "Transféré au Frigo",
                     $"'{SelectedItemToTransfer.Name}' a été ajouté au frigo avec la date de péremption du {TransferManualExpiryDate:dd/MM/yyyy}.",
-                    "Super");
+                    "OK");
             }
         }
 

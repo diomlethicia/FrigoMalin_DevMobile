@@ -29,14 +29,14 @@ namespace FrigoMalin.Models
         [Ignore]
         public string CategoryDisplay => Category switch
         {
-            FoodCategory.FruitsEtLegumes => "🥦 Fruits & Légumes",
-            FoodCategory.ProduitsLaitiers => "🧀 Produits Laitiers",
-            FoodCategory.ViandesEtPoissons => "🥩 Viandes & Poissons",
-            FoodCategory.PlatsCuisines => "🍲 Plats Cuisinés",
-            FoodCategory.EpicerieEtFeculents => "🌾 Épicerie & Féculents",
-            FoodCategory.Surgeles => "❄️ Surgelés",
-            FoodCategory.Boissons => "🧃 Boissons",
-            _ => "📦 Divers"
+            FoodCategory.FruitsEtLegumes => "Fruits & Légumes",
+            FoodCategory.ProduitsLaitiers => "Produits Laitiers",
+            FoodCategory.ViandesEtPoissons => "Viandes & Poissons",
+            FoodCategory.PlatsCuisines => "Plats Cuisinés",
+            FoodCategory.EpicerieEtFeculents => "Épicerie & Féculents",
+            FoodCategory.Surgeles => "Surgelés",
+            FoodCategory.Boissons => "Boissons",
+            _ => "Divers"
         };
     }
 }

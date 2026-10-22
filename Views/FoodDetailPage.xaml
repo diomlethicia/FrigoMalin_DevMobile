@@ -62,7 +62,7 @@
             <!-- CONSEIL DE STOCKAGE ANTI-GASPI -->
             <Frame BackgroundColor="#E3F2FD" BorderColor="#90CAF9" CornerRadius="12" Padding="14">
                 <VerticalStackLayout Spacing="6">
-                    <Label Text="💡 Conseil d'emplacement dans le frigo :" FontAttributes="Bold" FontSize="13" TextColor="#0D47A1" />
+                    <Label Text="Conseil d'emplacement dans le frigo :" FontAttributes="Bold" FontSize="13" TextColor="#0D47A1" />
                     <Label Text="{Binding StorageAdvice}" FontSize="12" TextColor="#1565C0" LineBreakMode="WordWrap" />
                 </VerticalStackLayout>
             </Frame>
@@ -70,7 +70,7 @@
             <!-- BOUTONS D'ACTION RAPIDE -->
             <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,8,0,0">
                 <Button Grid.Column="0"
-                        Text="✅ Consommé (Sauvé)"
+                        Text="Consommé (Sauvé)"
                         BackgroundColor="#2E7D32"
                         TextColor="White"
                         FontAttributes="Bold"
@@ -80,7 +80,7 @@
                         Command="{Binding MarkConsumedCommand}" />
 
                 <Button Grid.Column="1"
-                        Text="🗑️ Jeté (Périmé)"
+                        Text="Jeté (Périmé)"
                         BackgroundColor="#FFEBEE"
                         TextColor="#C62828"
                         BorderColor="#E57373"

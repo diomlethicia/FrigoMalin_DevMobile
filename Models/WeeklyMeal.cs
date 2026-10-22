@@ -22,9 +22,9 @@ namespace FrigoMalin.Models
         [Ignore]
         public string MealTypeDisplay => Type switch
         {
-            MealType.Dejeuner => "☀️ Déjeuner",
-            MealType.Diner => "🌙 Dîner",
-            _ => "🍎 Collation"
+            MealType.Dejeuner => "Déjeuner",
+            MealType.Diner => "Dîner",
+            _ => "Collation"
         };
     }
 }

@@ -1,11 +1,11 @@
-# 📱 DOSSIER COMPLET DE SIMULATION DES INTERFACES — FRIGOMALIN
-### Cours d'Atelier de Développement Mobile — Projet d'Examen Officiel
+# 📱 DOSSIER COMPLET DE PRÉSENTATION DES INTERFACES — FRIGOMALIN
+### Atelier de Développement Mobile
 
 **Étudiante :** Diom Lucraine Lethicia Fien  
 **Filière :** Niveau 5 / Master 2 en Génie Logiciel  
 **Projet :** Application Mobile Anti-Gaspillage Alimentaire « FrigoMalin »  
 **Technologie :** .NET MAUI (C# / XAML) — Architecture MVVM & SQLite  
-**Nombre d'interfaces conçues et intégrées :** **10 Interfaces complètes** *(Exigence minimale : 8)*  
+**Nombre d'interfaces conçues et intégrées :** **10 Interfaces complètes**  
 
 ---
 
@@ -31,7 +31,7 @@
 - Point d'entrée de l'application permettant l'accès sécurisé à l'inventaire personnalisé.
 - Saisie de l'adresse email et du mot de passe avec masquage.
 - Case à cocher « Se souvenir de moi ».
-- **Bouton « ⚡ Connexion Démo Rapide (1 clic) » :** Permet à l'enseignant ou au jury de se connecter instantanément en un clic pour tester l'application lors de l'évaluation ou de la vidéo de 30 secondes.
+- **Bouton « ⚡ Connexion Démo Rapide » :** Permet de se connecter rapidement pour explorer les fonctionnalités avec un jeu de données de test.
 - Lien vers la page d'inscription.
 
 ### Maquette / Simulation Visuelle :
@@ -57,7 +57,7 @@
 │ │                                                    │ │
 │ │ [                 SE CONNECTER                   ] │ │
 │ │                                                    │ │
-│ │ [      ⚡ Connexion Démo Rapide (1 clic)         ] │ │
+│ │ [          ⚡ Connexion Démo Rapide          ] │ │
 │ └────────────────────────────────────────────────────┘ │
 │                                                        │
 │         Pas encore de compte ? S'inscrire              │
@@ -195,7 +195,7 @@
 
 ### Rôle & Spécifications :
 - Saisie d'un aliment direct dans le frigo.
-- **Exigence stricte respectée :** La date de péremption est obligatoirement **sélectionnée manuellement via un `DatePicker`** pour garantir la conformité avec la date inscrite sur l'emballage.
+- Sélection de la date de péremption via un `DatePicker` pour enregistrer la date figurant sur l'emballage.
 - Nom, Catégorie (Picker), Quantité, Unité, Coût estimé (pour les statistiques financières).
 
 ### Maquette / Simulation Visuelle :
@@ -212,8 +212,8 @@
 │ DATES & SUIVI DE PÉREMPTION                            │
 │ Date d'achat : [ 19/10/2026          📅 ]             │
 │                                                        │
-│ 🗓️ DATE DE PÉREMPTION (SAISIE MANUELLE) *             │
-│ Indiquez manuellement la date limite de l'aliment :   │
+│ 🗓️ DATE DE PÉREMPTION *                               │
+│ Indiquez la date limite de consommation :              │
 │ [ 26/10/2026                         📅 ]             │
 ├────────────────────────────────────────────────────────┤
 │ [            💾 ENREGISTRER DANS MON FRIGO           ] │
@@ -257,8 +257,8 @@
 - Déclenchée instantanément dès qu'une case de la checklist est cochée.
 - **Pré-remplissage automatique :**
   - Nom, Catégorie, Quantité et Date d'achat (aujourd'hui) sont déjà renseignés.
-- **Saisie manuelle obligatoire :**
-  - L'utilisateur renseigne manuellement la **Date de péremption réelle** via le calendrier `DatePicker`.
+- **Date de péremption :**
+  - Renseignement de la date limite réelle via le calendrier `DatePicker`.
 - Bouton « ✅ Valider l'ajout » $\rightarrow$ Enregistrement dans le frigo et confirmation visuelle.
 
 ### Maquette / Simulation Visuelle :
@@ -273,8 +273,8 @@
 │ Date d'achat : [ 19/10/2026          ] (Date du jour)  │
 │                                                        │
 │ ┌────────────────────────────────────────────────────┐ │
-│ │ 🗓️ DATE DE PÉREMPTION (SAISIE MANUELLE) *          │ │
-│ │ Indiquez la date limite réelle vue au marché :     │ │
+│ │ 🗓️ DATE DE PÉREMPTION *                             │ │
+│ │ Indiquez la date limite réelle vue sur le produit : │ │
 │ │ [ 24/10/2026                         📅 ]          │ │
 │ └────────────────────────────────────────────────────┘ │
 │                                                        │
@@ -400,7 +400,7 @@
 ### Rôle & Spécifications :
 - Présentation du profil de l'étudiante (Lucraine Fien, Master 2 Génie Logiciel).
 - Réglage du seuil de notification préventive (alerter X jours avant la péremption via un curseur Slider).
-- Bouton de réinitialisation des données de démo pour l'examen.
+- Bouton de réinitialisation des données de démonstration.
 - Bouton de déconnexion ramenant à la page de connexion.
 
 ### Maquette / Simulation Visuelle :
@@ -423,7 +423,7 @@
 │ └────────────────────────────────────────────────────┘ │
 │                                                        │
 │ ┌────────────────────────────────────────────────────┐ │
-│ │ 🧪 Outils d'examen & Démonstration                 │ │
+│ │ 🧪 Données de démonstration                        │ │
 │ │ [       🔄 Réinitialiser les données de démo     ] │ │
 │ └────────────────────────────────────────────────────┘ │
 │                                                        │
