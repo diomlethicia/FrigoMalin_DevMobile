@@ -68,5 +68,5 @@ Pour simplement compiler le projet :
 
 ## Vidéo Démonstrative (30s)
 Une vidéo de démonstration complète de 30 secondes enregistrée directement sur l'émulateur Android est disponible dans le dépôt :
-- **Fichier MP4 :** [`docs/demo_frigomalin_30s.mp4`](docs/demo_frigomalin_30s.mp4)
-- **Scénario détaillé :** [`GUIDE_VIDEO_DEMO_30S.md`](GUIDE_VIDEO_DEMO_30S.md)
+- **Fichier MP4 :** [`docs/demo_frigomalin.mp4`](docs/demo_frigomalin.mp4)
+
